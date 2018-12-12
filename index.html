@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>EECS 349 Project Page</title>
+<!--
+Neaty HTML Template
+http://www.templatemo.com/tm-501-neaty
+-->
+    <!-- load stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" href="css/magnific-popup.css">                                <!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
+    <link rel="stylesheet" href="css/templatemo-style.css">                                   <!-- Templatemo style -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+</head>
+    <body>        
+        <div class="container">
+            <div class="row">
+                <div class="tm-left-right-container">
+                    <!-- Left column: logo and menu -->
+                    <div class="tm-blue-bg tm-left-column">                        
+                        <div class="tm-logo-div text-xs-center">
+                            <img src="img/tm-neaty-logo.png" alt="Logo">
+                            <h1 class="tm-site-name">EECS 349 Project</h1>
+                            <h2 class="tm-site-subtext">Tristan Litré</h2>
+                        </div>
+                        <nav class="tm-main-nav">
+                            <ul class="tm-main-nav-ul">
+                                <li class="tm-nav-item">
+                                    <a href="#welcome" class="tm-nav-item-link">Introduction</a>
+                                </li>
+                                <li class="tm-nav-item">
+                                    <a href="#about" class="tm-nav-item-link">Abstract</a>
+                                </li>
+                                <li class="tm-nav-item">
+                                    <a href="#galleryone" class="tm-nav-item-link">Dataset</a>
+                                </li>
+                                <li class="tm-nav-item">
+                                    <a href="#secondgallery" class="tm-nav-item-link">Approach</a>
+                                </li>
+                                <li class="tm-nav-item">
+                                    <a href="#thirdgallery" class="tm-nav-item-link">Results</a>
+                                </li>
+                            </ul>
+                        </nav>                                         
+                    </div> <!-- Left column: logo and menu -->
+                    
+                    <!-- Right column: content -->
+                    <div class="tm-right-column">
+                        <figure>
+                            <img src="img/unsplash1.jpg" alt="Header image" class="img-fluid">    
+                        </figure>
+
+                        <div class="tm-content-div">
+                            <!-- Welcome section -->
+                            <section id="welcome" class="tm-section">
+                                <header>
+                                    <h2 class="tm-blue-text tm-welcome-title tm-margin-b-45">Introduction</h2>
+                                </header>
+                                <p><b>Bag of Words Classification Using Glassdoor Ranking and Job Listings</b><br>
+                                    Tristan Litré | litre@u.northwestern.edu<br>
+                                    EECS 349 Northwestern University<br><br>
+                                    Tools used: python/pandas/sklearn
+                                    </p>
+                            </section>
+                            <!-- About section -->
+                            <section id="about" class="tm-section">
+                                <header>
+                                    <h2 class="tm-blue-text tm-section-title tm-margin-b-45">Abstract</h2>
+                                </header>
+                                <p>The goal of this project was to find a model that could predict the Glassdoor rating of a company based on information available in the listing. Although Glassdoor ratings are not an entirely reliable source of information, they are an attempt to approximate employee sentiment towards a company. The hope of this project is to point out to potential candidates how employee-friendly companies present themselves in their job listings, and perhaps indicate a similar thing to the recruitment division of these companies. Perhaps most interestingly, this classifier could potentially hint at what sorts of things are more attractive or important to candidates – similar to some of the work done by <a href="https://textio.com/products/">Textio.</a> Recruitment is a constantly evolving field that needs to change to fit the whims of both the companies and the candidates, this task aims to help both sides keep on top of what’s working and what isn’t.</p>
+
+                                <p>The dataset used for this project included a variety of information about the job listings, but this project focuses on the text description. Although there may be interesting analysis to be done with other fields, the description was one of the few things that recruiters have a lot of control over. This makes acting on the insights gained from the classifier a more realistic possibility. After preprocessing and testing, the final result was a Multinomial Naive Bayes classier that ran with an accuracy of  70.2% (Figure 1).</p>
+                                <img src="img/figure1.png" class="img-fluid">     
+                            </section>  
+
+                            <!-- Gallery One section -->     
+                            <section id="galleryone" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Dataset</h2></header>
+                                <p>The initial dataset used came from an online blog post whose author had scraped the data to do some exploratory analysis. This dataset was later supplemented with more entries that I scraped myself. All of the listings are of job listings on Glassdoor for data-related fields.The scraped fields included the company rating, salary range of the listed job, job title, job city and state, the city and state where the company is based, company size, industry, and a vocabulary created from the description. Finding this dataset was a stroke of luck, as I had already begun scraping Glassdoor and found working around the loading limitations of the site to be an extremely time-intensive and tedious process.</p>
+                                    <p>The final number of entries once those with missing fields were pruned was 6551. Though it would have been nice to keep collecting entries, this was finalized in the interest of time. After the dataset was all cleaned, I decided to do some exploratory analysis of my own using pandas. I first looked through the job titles to try and find some keywords, splitting jobs by seniority (senior, junior, associate, lead, I, II, etc…). I also averaged the salaries in the ranges and did some aggregation relating to that. However, though there were some interesting findings here – such as the fact that a company was much more likely to be ranked lower if they used the “I, II, III, IV” structure – I wasn’t really seeing a way for machine learning techniques to be applied to the data in a useful way. This brought me to the description, which was already sorted into a vocabulary.
+                                </p>
+                            </section>
+
+                            <!-- Second Gallery section -->     
+                            <section id="secondgallery" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Analysis</h2></header>
+                                <p>Though I knew there was a vectorizer in sklearn that could do a lot of the heavy lifting for me, I decided to write my own functions to turn the description into features that could be used by the classifier. Once this was done I made the classes for my classifier. The Glassdoor rating system is out of 5.0, but I realized that it would likely be difficult to get meaningful results if I used these as 50 different potential classes. Instead, I created 5 buckets that tried to cover the meaningful splits as well as possible.</p>
+                                <img src="img/figure2.png" class="img-fluid"><br>
+                                <p>I then started testing different classifiers using sklearn. I reserved a third of the data to test the model and trained on the rest. This left me with a training size of 4389 and a test size of 2162. I started with ZeroR as a baseline, which gave an expectedly bad result considering the split of the data. I then moved on to a Perceptron, which did much better, with a 65% accuracy once I set the maximum iterations to 50. </p>
+                                <p>After I could no longer increase its accuracy, I moved on to Naive Bayes. For both Naive Bayes classifiers I mostly messed with the alpha values, since it appeared to have the most noticeable effect. The Multinomial Naive Bayes classifier ended up beating out the Bernoulli classifier just barely, but for the most part they seemed to work fairly interchangeably.</p>
+                                <p>	Finally, I moved on to Logistic Regression. I had anticipated Logistic Regression being more accurate than Naive Bayes. After all, I imagined that some of the words in the vocabulary would perhaps break the assumption of independence if they were only used together. However, Logistic Regression proved to be noticeably less accurate no matter what I did, with a 3% difference compared to the Naive Bayes classifiers.</p>
+                                <p>	I also tested a number of other classifiers, such as RandomForest, but they all underperformed drastically as they weren’t really fit to classify this kind of data. I decided to omit these from the report for clarity.</p>
+                                <img src="img/figure3.png" class="img-fluid"><br>
+                            </section>
+
+                            <!-- Third Gallery section -->     
+                            <section id="thirdgallery" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Conclusion</h2></header>
+                                <p>This project aimed to create a classifier that worked to predict ratings and I would say that it achieved that goal to some degree. Though a 70% accuracy is far from definitive, or even particularly good, it still shows some degree of success in predicting the desired outcome. In the future, it would be beneficial to this project to continue scraping more data. I also believe that the data entry role listing could be expanded to include more types of data. I would be curious to see what kind of impact that might have. Overall, it was an extremely interesting learning experience to build my own featurizer and work with these classifiers.</p>
+                            </section>
+                            <footer></footer>
+                                
+                                | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+                            </footer>
+                        </div>  
+                        
+                    </div> <!-- Right column: content -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+                
+        <!-- load JS files -->
+        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+        <script src="js/jquery.magnific-popup.min.js"></script>     <!-- Magnific pop-up (http://dimsemenov.com/plugins/magnific-popup/) -->
+        <script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+        <script>     
+       
+            $(document).ready(function(){
+
+                // Single page nav
+                $('.tm-main-nav').singlePageNav({
+                    'currentClass' : "active",
+                    offset : 20
+                });
+
+                // Magnific pop up
+                $('.tm-gallery-1').magnificPopup({
+                  delegate: 'a', // child items selector, by clicking on it popup will open
+                  type: 'image',
+                  gallery: {enabled:true}
+                  // other options
+                }); 
+
+                $('.tm-gallery-2').magnificPopup({
+                  delegate: 'a', // child items selector, by clicking on it popup will open
+                  type: 'image',
+                  gallery: {enabled:true}
+                  // other options
+                }); 
+
+                $('.tm-gallery-3').magnificPopup({
+                  delegate: 'a', // child items selector, by clicking on it popup will open
+                  type: 'image',
+                  gallery: {enabled:true}
+                  // other options
+                }); 
+
+                $('.tm-current-year').text(new Date().getFullYear());                
+            });
+        </script>             
+</body>
+</html>
